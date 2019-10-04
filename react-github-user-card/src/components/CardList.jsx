@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import {Card} from './Card'
+import { Card } from "./Card";
 
 export const CardList = () => {
-
   return (
     <div>
       <Card />
+      
     </div>
   );
-
-}
+};

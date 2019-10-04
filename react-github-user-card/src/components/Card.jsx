@@ -1,10 +1,5 @@
 import React from "react";
 
 export const Card = () => {
-
-  return (
-    <div>
-
-    </div>
-  )
+  return <div></div>;
 };
