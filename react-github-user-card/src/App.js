@@ -10,8 +10,17 @@ class App extends Component {
 
     this.state = {
       gitUser: {},
-      gitFollowers: []
+      gitFollowers: [],
+      dropdownOpen: false
     }
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
   }
 
   componentDidMount() {
@@ -23,16 +32,6 @@ class App extends Component {
       .then(response => response.json())
       .then(user => this.setState({ gitFollowers: user }))
   }
-
-
-  // id
-  // avatar_url
-  // name
-  // login
-  // bio
-  // following
-  // followers
-  // html_url
 
   render() {
     return (
@@ -47,15 +46,22 @@ class App extends Component {
           <p>Followers: {this.state.gitUser.followers}</p>
           <p>Profile: <a href={this.state.gitUser.html_url}>{this.state.gitUser.html_url}</a>
           </p>
-          
-              {
-                this.state.gitFollowers.map(user => (
-                  <div>
-                    
-                  </div>
-                  ))
-              }
         </div>
+
+        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+          <DropdownToggle caret>
+            Followers List
+        </DropdownToggle>
+          <DropdownMenu>
+            {
+              this.state.gitFollowers.map(user => (
+                <DropdownItem key={user.id}><a href={user.html_url}>{user.login}</a></DropdownItem>
+              ))
+            }
+          </DropdownMenu>
+        </Dropdown>
+
+
       </div>
     )
   }
