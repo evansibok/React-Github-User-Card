@@ -30,7 +30,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Evans Ibok's Github Card</h1>
-        <UserCard user={this.state.gitUser} followers={this.state.followers} />
+        <UserCard user={this.state.gitUser} followers={this.state.followersList} />
       </div>
     )
   }
