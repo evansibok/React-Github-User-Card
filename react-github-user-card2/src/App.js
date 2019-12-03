@@ -29,7 +29,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Evans Ibok's Github Card</h1>
+        <h1 style={{ textAlign: "center" }}>{`${this.state.gitUser.name}'s Github Profile`}</h1>
         <UserCard user={this.state.gitUser} followers={this.state.followersList} />
       </div>
     )
