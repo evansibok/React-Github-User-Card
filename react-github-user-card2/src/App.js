@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-import data from './data'
-import CardList from './components/card-list';
+import UserCard from './components/user-card';
 
 export default class App extends Component {
 
@@ -9,28 +8,29 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      users: [
-        data,
-      ],
+      gitUser: {},
     }
   }
 
   componentDidMount() {
+    const followersUrl = this.state.gitUser.followers_url;
 
-    fetch(``)
-      .then()
-      .then()
+    fetch(`https://api.github.com/users/evansibok`)
+      .then(res => res.json())
+      .then(user => this.setState({ gitUser: user }))
+
+    fetch(`https://api.github.com/users/evansibok/followers`)
+      .then(res => res.json())
+      .then(followers => console.log(followers))
   }
 
 
 
   render() {
-    console.log(data)
     return (
       <div>
         <h1>Evans Ibok's Github Card</h1>
-        <CardList users={this.state.users} />
-
+        <UserCard user={this.state.gitUser} />
       </div>
     )
   }

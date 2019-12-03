@@ -7,6 +7,7 @@ const Container = styled.div`
   justify-content: center;
   margin: 2em 0;
   font-size: 0.9rem;
+
   .cardCon {
     display: flex;
     flex-direction: column;
@@ -38,6 +39,12 @@ const Container = styled.div`
       }
     }
 
+    .extra {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2em;
+    }
+
     .tb {
       font-weight: 500;
       font-size: 1rem;
@@ -59,14 +66,11 @@ function UserCard(props) {
           <img src={user.avatar_url} alt={`${user.name}'s headshot`} />
         </div>
         <div className="bottomSection">
-          <div>
-            <p>
-              <span className="tb">Bio:</span>
-              {` `}
-              {user.bio}
-            </p>
-            <a href={user.html_url}>Visit Profile</a>
-          </div>
+          <p>
+            <span className="tb">Bio:</span>
+            {` `}
+            {user.bio}
+          </p>
 
           <div className="followSection">
             <p>
@@ -77,6 +81,11 @@ function UserCard(props) {
               <span className="tb">Following:</span>
               {` `} {user.following}
             </p>
+          </div>
+
+          <div className="extra">
+            <a href={user.html_url}>Visit Profile</a>
+            <div>following dropdown</div>
           </div>
         </div>
       </div>
