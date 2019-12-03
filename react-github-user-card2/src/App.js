@@ -9,11 +9,11 @@ export default class App extends Component {
 
     this.state = {
       gitUser: {},
+      followersList: []
     }
   }
 
   componentDidMount() {
-    const followersUrl = this.state.gitUser.followers_url;
 
     fetch(`https://api.github.com/users/evansibok`)
       .then(res => res.json())
@@ -21,7 +21,7 @@ export default class App extends Component {
 
     fetch(`https://api.github.com/users/evansibok/followers`)
       .then(res => res.json())
-      .then(followers => console.log(followers))
+      .then(followers => this.setState({ followersList: followers }))
   }
 
 
@@ -30,7 +30,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Evans Ibok's Github Card</h1>
-        <UserCard user={this.state.gitUser} />
+        <UserCard user={this.state.gitUser} followers={this.state.followers} />
       </div>
     )
   }
