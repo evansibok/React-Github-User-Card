@@ -37,17 +37,15 @@ export default class App extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    const currentUserName = this.state.username;
-    console.log(this.state)
 
-    fetch(`https://api.github.com/users/${currentUserName}`)
+    fetch(`https://api.github.com/users/${this.state.username}`)
       .then(res => res.json())
       .then(newUser => {
         console.log(newUser)
         this.setState({ gitUser: newUser })
       })
 
-    fetch(`https://api.github.com/users/${currentUserName}/followers`)
+    fetch(`https://api.github.com/users/${this.state.username}/followers`)
       .then(res => res.json())
       .then(newFollowers => {
         console.log(newFollowers)
@@ -55,16 +53,17 @@ export default class App extends Component {
       })
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  // componentDidUpdate(prevProps, prevState) {
 
-    if (this.state.username) {
-      this.handleSubmit();
-    }
+  //   if (this.state.username) {
+  //     this.handleSubmit();
+  //   }
 
-  }
+  // }
 
   render() {
     console.log(this.state.followersList)
+    console.log(this.state.username)
     return (
       <div>
         <h1 style={{ textAlign: "center" }}>{`${this.state.gitUser.name}'s Github Profile`}</h1>
@@ -74,7 +73,7 @@ export default class App extends Component {
             type="text"
             name="username"
             placeholder="Enter Name..."
-            onChange={() => this.handleChange}
+            onChange={this.handleChange}
           />
           <button onClick={this.handleSubmit}>Search</button>
         </form>
