@@ -92,15 +92,17 @@ export default class UserCard extends Component {
               <div>
                 <div>Followers</div>
                 <ul>
-                  {this.props.followers.map(f => (
-                    <a
-                      href={f.html_url}
-                      key={f.id}
-                      alt={`${f.login}'s profile link`}
-                    >
-                      <li>{f.login}</li>
-                    </a>
-                  ))}
+                  {/* {this.props.followers
+                    ? this.props.followers.map(f => (
+                        <a
+                          href={f.html_url}
+                          key={f.id}
+                          alt={`${f.login}'s profile link`}
+                        >
+                          <li>{f.login}</li>
+                        </a>
+                      ))
+                    : null} */}
                 </ul>
               </div>
             </div>
