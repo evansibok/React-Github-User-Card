@@ -40,17 +40,11 @@ export default class App extends Component {
 
     fetch(`https://api.github.com/users/${this.state.username}`)
       .then(res => res.json())
-      .then(newUser => {
-        console.log(newUser)
-        this.setState({ gitUser: newUser })
-      })
+      .then(newUser => this.setState({ gitUser: newUser }))
 
     fetch(`https://api.github.com/users/${this.state.username}/followers`)
       .then(res => res.json())
-      .then(newFollowers => {
-        console.log(newFollowers)
-        this.setState({ followersList: newFollowers })
-      })
+      .then(newFollowers => this.setState({ followersList: newFollowers }))
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -62,8 +56,6 @@ export default class App extends Component {
   // }
 
   render() {
-    console.log(this.state.followersList)
-    console.log(this.state.username)
     return (
       <div>
         <h1 style={{ textAlign: "center" }}>{`${this.state.gitUser.name}'s Github Profile`}</h1>

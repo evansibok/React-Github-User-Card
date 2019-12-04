@@ -54,7 +54,6 @@ const Container = styled.div`
 
 export default class UserCard extends Component {
   render() {
-    console.log(this.props);
     return (
       <Container>
         <div className="cardCon">
@@ -92,7 +91,7 @@ export default class UserCard extends Component {
               <div>
                 <div>Followers</div>
                 <ul>
-                  {/* {this.props.followers
+                  {this.props.followers
                     ? this.props.followers.map(f => (
                         <a
                           href={f.html_url}
@@ -102,7 +101,7 @@ export default class UserCard extends Component {
                           <li>{f.login}</li>
                         </a>
                       ))
-                    : null} */}
+                    : null}
                 </ul>
               </div>
             </div>
